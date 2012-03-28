@@ -415,6 +415,21 @@ void TraCIScenarioManager::commandSetSpeed(std::string nodeId, double speed) {
 	ASSERT(buf.eof());
 }
 
+void TraCIScenarioManager::commandNewRoute(std::string nodeId, std::string roadId) {
+    variableId = LANE_EDGE_ID;
+    uint8_t variableType = TYPE_STRING;
+    buf = queryTraCI(CMD_SET_VEHICLE_VARIABLE, TraCIBuffer() << variableId << nodeId << variableType << roadId);
+    ASSERT(buf.eof());
+}
+
+void TraCIScenarioManager::commandSetVehicleParking(std::string nodeId) {
+    variableId = REMOVE;
+    uint8_t variableType = TYPE_BYTE;
+    uint8_t value = 1;
+    buf = queryTraCI(CMD_SET_VEHICLE_VARIABLE, TraCIBuffer() << variableId << nodeId << variableType << value);
+    ASSERT(buf.eof());
+}
+
 void TraCIScenarioManager::commandChangeRoute(std::string nodeId, std::string roadId, double travelTime) {
 	if (travelTime >= 0) {
 		uint8_t variableId = VAR_EDGE_TRAVELTIME;
