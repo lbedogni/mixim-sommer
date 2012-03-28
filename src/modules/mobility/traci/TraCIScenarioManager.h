@@ -53,7 +53,7 @@ class TraCIScenarioManager : public cSimpleModule
 		virtual void handleMessage(cMessage *msg);
 		virtual void handleSelfMsg(cMessage *msg);
 
-		std::string commandNewRoute(std::string nodeId, std::string roadId);
+		void commandNewRoute(std::string nodeId, std::string roadId);
 		void commandSetVehicleParking(std::string nodeId);
 
 		std::pair<uint32_t, std::string> commandGetVersion();

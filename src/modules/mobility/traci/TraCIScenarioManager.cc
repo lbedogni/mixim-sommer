@@ -416,17 +416,17 @@ void TraCIScenarioManager::commandSetSpeed(std::string nodeId, double speed) {
 }
 
 void TraCIScenarioManager::commandNewRoute(std::string nodeId, std::string roadId) {
-    variableId = LANE_EDGE_ID;
+	uint8_t variableId = LANE_EDGE_ID;
     uint8_t variableType = TYPE_STRING;
-    buf = queryTraCI(CMD_SET_VEHICLE_VARIABLE, TraCIBuffer() << variableId << nodeId << variableType << roadId);
+    TraCIBuffer buf = queryTraCI(CMD_SET_VEHICLE_VARIABLE, TraCIBuffer() << variableId << nodeId << variableType << roadId);
     ASSERT(buf.eof());
 }
 
 void TraCIScenarioManager::commandSetVehicleParking(std::string nodeId) {
-    variableId = REMOVE;
+	uint8_t variableId = REMOVE;
     uint8_t variableType = TYPE_BYTE;
     uint8_t value = 1;
-    buf = queryTraCI(CMD_SET_VEHICLE_VARIABLE, TraCIBuffer() << variableId << nodeId << variableType << value);
+    TraCIBuffer buf = queryTraCI(CMD_SET_VEHICLE_VARIABLE, TraCIBuffer() << variableId << nodeId << variableType << value);
     ASSERT(buf.eof());
 }
 
