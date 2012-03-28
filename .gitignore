@@ -56,4 +56,6 @@ examples/WSNRouting/WSNRouting
 examples/bmac/bmac
 examples/lmac/lmac
 **.vci
-
+.cproject
+.csettings
+tests/power
